@@ -17,13 +17,6 @@ const LoginPageInputs = ({mail, setMail, password, setPassword}) => {
         type = 'password'
         placeholder = 'Enter password'
         />
-        <InputWithLabel
-        value = ""
-        setValue = ""
-        label ='Confirm Password'
-        type = 'password'
-        placeholder = 'Confirm password'
-        />
     </>
 }
 
