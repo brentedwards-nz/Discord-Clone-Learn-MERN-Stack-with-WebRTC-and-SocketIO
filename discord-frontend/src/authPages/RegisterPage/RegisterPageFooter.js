@@ -8,7 +8,7 @@ const getFormValidMessage = () => {
     return "Press to register"
 }
 const getFormNotValidMessage = () => {
-    return "Username should contain between 3 and 12 characters and password should contaion between 6 and 12 characters. Also correct e-mail address should be provided"
+    return "Username should contain between 3 and 12 characters and password should contain between 6 and 12 characters. Also correct e-mail address should be provided"
 }
 
 const RegisterPageFooter = ({handleRegister, isFormValid}) => {
