@@ -6,6 +6,8 @@ const postLogin = async (req, res) => {
     try{
         const { mail, password } = req.body;
 
+        res.set('Access-Control-Allow-Origin', '*');
+        
         // Check user exists
         const user = await User.findOne({mail: mail.toLowerCase()});
         

@@ -6,33 +6,45 @@ export const authActions = {
 
 export const getActions = (dispatch) => {
     return {
-        login: (userDetails, history) => dispatchEvent(login(userDetails, history)),
-        register: (userDetails, history) => dispatchEvent(register(userDetails, history)),
-    }
-} 
+        register: (userDetails, history) => dispatch(register(userDetails, history)),
+        login: (userDetails, history) => dispatch(login(userDetails, history)),
+    };
+};
 
 const setUserDetails = (userDetails) => {
     return {
         type: authActions.SET_USER_DETAILS,
         userDetails
-    }
-}
+    };
+};
 
 const login = (userDetails, history) => {
     return async (dispatch) => {
-        const response = api.login(userDetails); 
+        const response = await api.login(userDetails); 
+        console.log("login: " + response);
         if(response.error) {
-            // Show alert
+            console.log("login: response.error");
         }
         else {
-            const { userDetails } = response?.data;
+            const userDetails = response?.data;
             localStorage.setItem("user", JSON.stringify(userDetails))
             dispatch(setUserDetails(userDetails));
-            history.push('/dashboard')
+            history("/dashboard")
         }
-    }
-}
+    };
+};
 
 const register = (userDetails, history) => {
-
-}
+    return async (dispatch) => {
+      const response = await api.register(userDetails);
+      console.log(response);
+      if (response.error) {
+        console.log("register: " + response.error);
+      } else {
+        const userDetails  = response?.data;
+        localStorage.setItem("user", JSON.stringify(userDetails));
+        dispatch(setUserDetails(userDetails));
+        history("/dashboard");
+      }
+    };
+  };

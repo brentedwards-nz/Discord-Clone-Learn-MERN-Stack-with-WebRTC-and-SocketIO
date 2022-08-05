@@ -19,6 +19,7 @@ const loginSchema = Joi.object({
 router.post('/register', validator.body(registerSchema), authControllers.controllers.postRegister);
 router.post('/login', validator.body(loginSchema), authControllers.controllers.postLogin);
 router.get('/test', auth, (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     res.send("Request success");
 })
 

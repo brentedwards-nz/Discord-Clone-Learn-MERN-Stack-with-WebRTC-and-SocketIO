@@ -6,11 +6,13 @@ const postRegister = async (req, res) => {
     try{
         const { username, mail, password } = req.body;
 
+        res.set('Access-Control-Allow-Origin', '*');
+
         // Check user exists
         const userExists = await User.exists({mail});
 
         if(userExists) {
-            return res.status(409).send("Error occured. Please try again");    
+            return res.status(409).send("Error occured. User exists");    
         }
 
         // Encrypt password
