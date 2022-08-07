@@ -1,26 +1,27 @@
-export const validateLoginForm = ({mail, password}) => {
-    const isMailValid = validateEmail(mail);
-    const isPasswordValid = validatePassword(password);
+export const validateLoginForm = ({ mail, password }) => {
+  const isMailValid = validateMail(mail);
+  const isPasswordValid = validatePassword(password);
 
-    return isMailValid && isPasswordValid;
-}
+  return isMailValid && isPasswordValid;
+};
 
-export const validateRegisterForm = ({mail, password, username}) => {
-    const isMailValid = validateEmail(mail);
-    const isPasswordValid = validatePassword(password);
-    const isUsernameValid = validateUsername(username);
-
-    return isMailValid && isPasswordValid && isUsernameValid;
-}
+export const validateRegisterForm = ({ mail, password, username }) => {
+  return (
+    validateMail(mail) &&
+    validatePassword(password) &&
+    validateUsername(username)
+  );
+};
 
 const validatePassword = (password) => {
-    return password.length > 5 && password.length < 13;
-}
+  return password.length > 5 && password.length < 13;
+};
 
-const validateEmail = (email) => {
-    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
-}
+const validateMail = (mail) => {
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return emailPattern.test(mail);
+};
 
 const validateUsername = (username) => {
-    return username.length > 2 && username.length < 13;
-}
+  return username.length > 2 && username.length < 13;
+};
