@@ -1,0 +1,21 @@
+import React from 'react';
+import { useState } from 'react';
+
+const AddFriendDialog = ({
+    isDialogOpen,
+    closeDialigHandler,
+    sendFreindInvitation = () => {}
+}) => {
+    const [mail, setMail] = useState('');
+    const [isFormValid, setIsFormValid] = useState('');
+
+    const handleSendInvitation = () => {
+
+    };
+
+    return (
+        <></>
+    );
+};
+
+export default AddFriendDialog;
