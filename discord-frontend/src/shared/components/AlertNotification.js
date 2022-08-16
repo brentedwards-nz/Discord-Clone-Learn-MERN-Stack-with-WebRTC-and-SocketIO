@@ -6,8 +6,8 @@ import { getActions } from "../../store/actions/alertActions";
 
 const AlertNotification = ({
   showAlertMessage,
-  alertMessageContent,
   closeAlertMessage,
+  alertMessageContent,
 }) => {
   return (
     <Snackbar

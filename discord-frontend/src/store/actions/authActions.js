@@ -10,6 +10,7 @@ export const getActions = (dispatch) => {
     login: (userDetails, history) => dispatch(login(userDetails, history)),
     register: (userDetails, history) =>
       dispatch(register(userDetails, history)),
+    setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails)),
   };
 };
 
@@ -25,8 +26,7 @@ const login = (userDetails, history) => {
     const response = await api.login(userDetails);
     console.log(response);
     if (response.error) {
-      const e = response?.exception?.response?.data
-      dispatch(openAlertMessage(e));
+      dispatch(openAlertMessage(response?.exception?.response?.data));
     } else {
       const { userDetails } = response?.data;
       localStorage.setItem("user", JSON.stringify(userDetails));
